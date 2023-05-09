@@ -31,6 +31,47 @@
       count: 0,
       title: 'My Counter',
     });
+
+    const increaseCounter = amount => counterData.value.count += amount;
+    const decreaseCounter = amount => counterData.value.count -= amount;
+
+
+    watch(() => counterData.value.count, (newCount) => {
+      if (newCount === 10) {
+        alert('10 combo!');
+      }
+    });
+
+    const oddOrEven = computed(() => {
+      if (counterData.value.count % 2 === 0) return 'even'
+      return 'odd'
+    });
+
+    onBeforeMount(() => {
+      // 마운트 되기 전에 필요한 작업
+      console.log('beforemount');
+    })
+
+    onMounted(() => {
+      console.log('mounted');
+      console.log('The app title is', appTitleRef.value);
+    });
+
+    onBeforeUpdate(() => {
+      console.log('onBeforeUpdate');
+    });
+
+    onUpdated(() => {
+      console.log('onUpdated');
+    });
+
+    onBeforeUnmount(() => {
+      console.log('onBeforeUnmount');
+    });
+  
+    onUnmounted(() => {
+      console.log('unmounted');
+    });
   
   </script>
   
